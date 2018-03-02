@@ -2,6 +2,6 @@ export interface ProdutoDTO{
     codigoProduto: string;
     nomeProduto: string;
     preco: number;
-    quantidade: number;
+    quantidadeEstoque: number;
     imageUrl?:string;
 }

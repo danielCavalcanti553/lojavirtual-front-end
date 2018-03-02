@@ -48,9 +48,9 @@ export class ProfilePage {
   }
 
   getImagePerfil(){
-    this.clienteService.getImageFromS3(this.cliente.id)
+    this.clienteService.getImageFromS3(this.cliente.codigoCliente)
       .subscribe(response => {
-        this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
+        this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.codigoCliente}.jpg`;
       },
       error => {});
     }
