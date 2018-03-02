@@ -11,6 +11,11 @@
 
 
 <ion-content padding>
+
+    <ion-fab top right edge>
+        <button navPush="CarrinhoPage" ion-fab color="primary"><ion-icon name="cart"></ion-icon></button>
+      </ion-fab>
+
   <ion-list>
     <!-- *ngFor: Diretiva para repetir, items foi definido em categorias.ts  --> 
     <button ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">

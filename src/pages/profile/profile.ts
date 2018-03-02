@@ -27,7 +27,7 @@ export class ProfilePage {
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
           // resposta com sucesso
-          this.cliente = response;
+          this.cliente = response as ClienteDTO;
           this.getImagePerfil();
         },
       error => {

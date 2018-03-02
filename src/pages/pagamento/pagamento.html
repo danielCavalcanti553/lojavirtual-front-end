@@ -1,0 +1,25 @@
+<ion-header>
+
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Forma de pagamento</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <!-- Executa a função nextPage(), controle -> $envet.prefentDefault -->
+    <form [formGroup]="formGroup" (ngSubmit)="proximo(); $event.preventDefault()">
+     
+        <ion-item>
+            <ion-label stacked>Número do Cartão de Crédito</ion-label>
+            <ion-input formControlName="numeroCartao" type="text"></ion-input>
+          </ion-item>
+
+          <p *ngIf="formGroup.controls.numeroCartao.dirty && formGroup.controls.numeroCartao.errors" margin-left>Valor Inválido</p>
+      <button ion-button block type="submit" [disabled]="formGroup.invalid">Próximo</button>
+    </form>
+  </ion-content>

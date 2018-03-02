@@ -61,7 +61,8 @@ export class CarrinhoPage {
   }
 
   checkout(){
-    this.navCtrl.push('PickAdressPage');
+    this.navCtrl.push('PagamentoPage');
   }
+
 
 }
