@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+   <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+   </button>
+   <ion-title>Categorias</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <!-- *ngFor: Diretiva para repetir, items foi definido em categorias.ts  --> 
+    <button ion-item *ngFor="let item of items">
+
+      <ion-thumbnail item-start>
+        <img src="{{bucketUrl}}/cat{{item.id}}.jpg">
+      </ion-thumbnail>
+      <!-- {{}} : Interpolação > HTML com o dado de categorias.ts (item) -->
+      <h2>{{item.nomeCategoria}}</h2>
+    
+    </button>
+
+  </ion-list>
+</ion-content>
