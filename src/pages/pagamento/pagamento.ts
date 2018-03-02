@@ -45,9 +45,10 @@ export class PagamentoPage {
           let carrinho = this.carrinhoService.getCarrinho();
 
           this.pedido = {
-            cliente: {codigoCliente : response['id']},
+            cliente: {codigoCliente : response['codigoCliente']},
             pagamento : null,
-            itens : carrinho.items.map(x=>{return {quantidade:x.quantidade , produto: {codigoProduto:x.produto.codigoProduto}}})
+            itens : carrinho.items.map(x=>{return {quantidade:x.quantidade , produto:
+                    {codigoProduto:x.produto.codigoProduto}}})
           }
         },
       error => {
@@ -64,10 +65,11 @@ export class PagamentoPage {
       this.navCtrl.setRoot('HomePage');
     }
 
-    console.log('ionViewDidLoad ProfilePage');
+ 
   }
 
   proximo(){
+    this.pedido.pagamento = this.formGroup.value
     console.log(this.pedido);
   }
 
