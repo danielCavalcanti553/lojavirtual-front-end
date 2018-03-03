@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngIf="codigoNew">Pedido Registrado</ion-title>
+      <ion-title *ngIf="!codigoNew">Confira seu pedido</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+
+  <div *ngIf="!codigoNew">
+    <ion-card>
+      <ion-card-header>
+        Itens do pedido
+      </ion-card-header>
+      
+      <ion-list>
+        <ion-item *ngFor="let item of carItens">
+          <ion-thumbnail item-start>
+            <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
+          </ion-thumbnail>
+          <h2>{{item.produto.nomeProduto}}</h2>
+          <p>{{item.produto.preco | currency}}</p>
+          <p class="nolinebreak">{{item.quantidade}}</p>
+          <p item-end>{{item.produto.preco * item.quantidade | currency}}</p>
+        </ion-item> 
+  
+        <ion-item>
+          <h2>Total</h2>
+          <h2 item-end>{{total() | currency}}</h2>
+        </ion-item>
+      </ion-list> 
+    </ion-card>
+  
+    <ion-card>
+        <ion-card-header>
+          Cliente
+        </ion-card-header>
+        <ion-item>
+          <h2>{{cliente?.nome}}</h2>
+          <p>{{cliente?.email}}</p>
+        </ion-item>
+    </ion-card>
+ 
+    
+    <ion-card>
+        <ion-card-header>
+          Número do Cartão
+        </ion-card-header>
+        <ion-item>
+          <h2>{{pedido.pagamento.numeroCartao}}</h2>
+         
+        </ion-item>
+    </ion-card>
+  
+
+    <button ion-button block (click)="checkout()">Confimar Pedido</button>
+    <button ion-button block outline (click)="voltar()">Voltar</button>
+</div>
+
+
+  <div *ngIf="codigoNew">
+    <ion-card>
+        <ion-card-header>
+          Seu pedido foi registrado!
+        </ion-card-header>
+        <ion-item>
+          <h2>Código do pedido: {{codigoNew}}</h2>
+          <p>Verifique seu email</p>
+        </ion-item>
+    </ion-card>
+</div>
+  </ion-content>

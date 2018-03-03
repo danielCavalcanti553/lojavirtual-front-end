@@ -69,8 +69,8 @@ export class PagamentoPage {
   }
 
   proximo(){
-    this.pedido.pagamento = this.formGroup.value
-    console.log(this.pedido);
+    this.pedido.pagamento = this.formGroup.value;
+    this.navCtrl.setRoot('ConfirmacaoPedidoPage', {pedido : this.pedido});
   }
 
 }
