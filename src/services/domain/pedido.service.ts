@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"; // Retirei "src/client" para importar todos de http
 import { API_CONFIG } from "../../config/api.config";
-import { CategoriaDTO } from "../../models/categoria.dto";
 import { PedidoDTO } from "../../models/pedido.dto";
 
 @Injectable() // Permite que seja injetado

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CategoriaService } from '../../services/domain/categoria.service';
 import { CategoriaDTO } from '../../models/categoria.dto';
 import { API_CONFIG } from '../../config/api.config';
@@ -26,7 +26,8 @@ export class CategoriasPage {
     public categoriaService: CategoriaService,
     public storage : StorageService,
     public app : MyApp,
-    public auth :AuthService
+    public auth :AuthService,
+    public loading : LoadingController
   ) { // Injetar serviço findAll de CategoriaService
     }
 
@@ -37,6 +38,7 @@ export class CategoriasPage {
     // Pode criar um função de erro  , erro => { .... }
 
     // Adicionando perfil para menu
+    let loader = this.presentLoading();
     let perfil :Array<{ title: string, component: string }> = [];
     this.auth.findByEmailToMenu(this.storage.getLocalUser().email)
         .subscribe(response => {
@@ -48,6 +50,7 @@ export class CategoriasPage {
 
               this.app.pages = this.auth.perfilCliente();
             }
+            loader.dismiss();
     });
 
     
@@ -67,5 +70,11 @@ export class CategoriasPage {
     this.navCtrl.push('ProdutosPage', {categoria_id : categoria_id});
   }
 
-
+  presentLoading() {
+    let loader = this.loading.create({
+      content: "Aguarde..."
+    });
+    loader.present();
+    return loader;
+  }
 }
