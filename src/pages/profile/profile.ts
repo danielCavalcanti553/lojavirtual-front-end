@@ -44,7 +44,6 @@ export class ProfilePage {
       this.navCtrl.setRoot('HomePage');
     }
 
-    console.log('ionViewDidLoad ProfilePage');
   }
 
   getImagePerfil(){

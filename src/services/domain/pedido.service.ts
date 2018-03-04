@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http"; // Retirei "src/client" para 
 import { API_CONFIG } from "../../config/api.config";
 import { CategoriaDTO } from "../../models/categoria.dto";
 import { PedidoDTO } from "../../models/pedido.dto";
-import { ResponseType } from "@angular/http/src/enums";
 
 @Injectable() // Permite que seja injetado
 export class PedidoService{

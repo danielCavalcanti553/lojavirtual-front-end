@@ -25,6 +25,24 @@ export class StorageService{
         }
     }
 
+    setMenu(obj : Array<{ title: string, component: string }>){
+        if(obj == null ){ // se o objeto for nulo
+            localStorage.removeItem(STORAGE_KEYS.menus);
+        }else{ // armazenar no localStorage em formato Text (String)
+            localStorage.setItem(STORAGE_KEYS.menus,JSON.stringify(obj));
+        }
+    }
+
+    getMenu() : Array<{ title: string, component: string }>{
+        let menu = localStorage.getItem(STORAGE_KEYS.menus);// pego o valor no localStore
+        
+        if(menu==null){ // Existe usuário
+            return null;
+        }else{
+            return JSON.parse(menu);
+        }
+    }
+
     // retorna carringo de compras
     getCart() : Carrinho{
         let str = localStorage.getItem(STORAGE_KEYS.car);// pego o valor no localStore

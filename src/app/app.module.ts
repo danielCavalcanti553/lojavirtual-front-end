@@ -15,6 +15,7 @@ import { ClienteService } from '../services/domain/cliente.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CarrinhoService } from '../services/domain/carrinho.service';
+import { CacheModule } from 'ionic-cache';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CarrinhoService } from '../services/domain/carrinho.service';
     BrowserModule,
     HttpClientModule, // Funcionar requisções HTTP para todas as páginas
     IonicModule.forRoot(MyApp),
+    CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

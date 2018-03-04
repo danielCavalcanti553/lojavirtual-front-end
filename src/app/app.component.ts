@@ -1,13 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injectable } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 
 
 @Component({
   templateUrl: 'app.html'
 })
+@Injectable()
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
@@ -19,19 +21,16 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public auth: AuthService
+    public auth: AuthService,
+    public storage : StorageService
   ) {
 
+    this.pages = storage.getMenu();
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     // Menu principal
-    this.pages = [
-      { title: 'Profile', component: 'ProfilePage' },
-      { title: 'Categorias', component: 'CategoriasPage' },
-      { title: 'Carrinho', component: 'CarrinhoPage' },
-      { title: 'Logout', component: '' }
-    ];
+    
 
   }
 
@@ -50,6 +49,7 @@ export class MyApp {
     switch (page.title) {
 
       case 'Logout':
+        this.pages = [];
         this.auth.logout();
         this.nav.setRoot('HomePage');
         break;

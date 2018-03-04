@@ -7,8 +7,9 @@ import { StorageService } from "./storage.service";
 import { JwtHelper } from "angular2-jwt";
 import { CarrinhoService } from "./domain/carrinho.service";
 
+
 @Injectable()
-export class AuthService{ J
+export class AuthService{ 
 
     jwtHelper: JwtHelper = new JwtHelper();
 
@@ -19,6 +20,7 @@ export class AuthService{ J
     }
 
     authenticate(creds : CredenciaisDTO){
+        this.storage.setMenu(null);
         return this.http.post(
             `${API_CONFIG.baseUrl}/login`,
             creds,
@@ -27,6 +29,10 @@ export class AuthService{ J
                 responseType: 'text' // evitar erro parseJSON em retorno vazio  
             }
         );
+    }
+
+    findByEmailToMenu(email:string){
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 
     refreshToken(){ // token incluido automaticamente na requisição
@@ -47,12 +53,43 @@ export class AuthService{ J
             token: tok,
             email: this.jwtHelper.decodeToken(tok).sub
         };
-
         this.storage.setLocalUser(user);
         this.carrinhoService.createOrClearCart();
     }
 
+    perfil(){        
+        
+
+
+       
+    }
+
     logout(){
+       
+        
+        this.storage.setMenu(null);
         this.storage.setLocalUser(null);
     }
+
+    perfilCliente() : Array<{ title: string, component: string }>{
+
+        return [
+          { title: 'Profile', component: 'ProfilePage' },
+          { title: 'Categorias', component: 'CategoriasPage' },
+          { title: 'Carrinho', component: 'CarrinhoPage' },
+          { title: 'Logout', component: ''}
+        ];
+  
+    }
+  
+    perfilAdmin() : Array<{ title: string, component: string }>{
+  
+        return [
+          { title: 'Profile', component: 'ProfilePage' },
+          { title: 'Categorias', component: 'CategoriasPage' },
+          { title: 'Carrinho', component: 'CarrinhoPage' },
+          { title: 'Administrador', component: 'CarrinhoPage'},
+          { title: 'Logout', component: ''}
+        ];
+      }
 }
