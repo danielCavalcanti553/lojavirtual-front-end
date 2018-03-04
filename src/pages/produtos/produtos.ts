@@ -12,8 +12,8 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 })
 export class ProdutosPage {
 
-  items: ProdutoDTO[];
-
+  items: ProdutoDTO[] = [];
+  page : number = 0;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,25 +28,29 @@ export class ProdutosPage {
   loadData(){
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id) //, this.page, this.lines
+    this.produtoService.findByCategoria(categoria_id, this.page, 10) //, this.page, this.lines
       .subscribe(response => {
-        //let start = this.items.length;
-        this.items = response['content']//this.items.concat(response['content']);
+        let start = this.items.length;
+        this.items = this.items.concat(response['content']);//this.items.concat(response['content']);
+        let end = this.items.length - 1;
         loader.dismiss();
-        this.loadImageUrls();
-        //let end = this.items.length - 1;
+        console.log(this.page);
+        console.log(this.items);
+        
+        this.loadImageUrls(start, end);
+        
         //console.log(this.page);
         //console.log(this.items);
-        //this.loadImageUrls(start, end);
+        //
       },
       error => {
         loader.dismiss();
       });
   }
 
-  loadImageUrls() { //start: number, end: number
+  loadImageUrls(start: number, end: number) { //
     // Carregando imagens para todos os produtos em items
-    for (var i = 0; i < this.items.length; i++) { // for (var i = start; i <= end; i++) 
+    for (var i = start; i <= end; i++)  { 
       let item = this.items[i];
       this.produtoService.getSmallImageFromBucket(item.codigoProduto)
         .subscribe(response => {
@@ -69,9 +73,20 @@ export class ProdutosPage {
   }
 
   doRefresh(refresher) {
+    this.page = 0;
+    this.items = [];
     this.loadData();
     setTimeout(() => {
       refresher.complete();
     }, 2000);
+  }
+
+  doInfinite(infiniteScroll) {
+    this.page ++;
+    this.loadData();
+    setTimeout(() => {
+      
+      infiniteScroll.complete();
+    }, 1000);
   }
 }
