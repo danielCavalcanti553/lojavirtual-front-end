@@ -12,6 +12,10 @@ export class ProdutoService{
     constructor(public http: HttpClient){
     }
 
+    findByEstoque(page : number = 0, linesPage : number = 15){
+        return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/estoque?page=${page}&linesPage=${linesPage}`);
+    }
+
     findById(produto_id : string){
         return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/${produto_id}`);
     }

@@ -1,0 +1,51 @@
+<ion-header>
+
+    <ion-navbar style="background-color:blue;">
+     <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+     </button>
+     <ion-title>Estoque</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+    
+    
+    <ion-content padding>
+    
+      
+    
+            <ion-refresher (ionRefresh)="doRefresh($event)">
+              <ion-refresher-content></ion-refresher-content>
+            </ion-refresher>
+          
+         
+      
+        <ion-fab top right edge>
+           
+          </ion-fab>
+      <ion-list>
+        <button ion-item *ngFor="let item of items" (click)="showDetail(item.codigoProduto)">
+          <ion-thumbnail item-start>
+            <img [src]="item.imageUrl || 'assets/imgs/prod.jpg'">
+          </ion-thumbnail>
+          <h2>{{item.nomeProduto}}</h2>
+          
+          <p style="color: red;" *ngIf="item.quantidadeEstoque<1">[ESGOTADO]</p>
+          <p style="color: peru;" *ngIf="item.quantidadeEstoque==1">[ESGOTANDO]</p>
+          <p style="color:peru;" *ngIf="item.quantidadeEstoque==2">[ESGOTANDO]</p>
+          <p clear item-end>
+             
+              {{item.quantidadeEstoque}}
+       
+          </p>
+
+        </button>
+      </ion-list>
+    
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ion-content>
+    

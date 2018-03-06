@@ -74,6 +74,7 @@ export class AuthService{
           { title: 'Profile', component: 'ProfilePage' },
           { title: 'Meus Dados', component: 'DadosClientePage' },
           { title: 'Categorias', component: 'CategoriasPage' },
+          { title: 'Pedidos', component: 'PedidoPage' },
           { title: 'Carrinho', component: 'CarrinhoPage' },
           { title: 'Logout', component: ''}
         ];
@@ -86,8 +87,10 @@ export class AuthService{
           { title: 'Profile', component: 'ProfilePage' },
           { title: 'Meus Dados', component: 'DadosClientePage' },
           { title: 'Categorias', component: 'CategoriasPage' },
+          { title: 'Pedidos', component: 'PedidoPage' },
           { title: 'Carrinho', component: 'CarrinhoPage' },
           { title: 'Histórico', component: 'HistoricoPage'},
+          { title: 'Estoque', component: 'EstoquePage'},
           { title: 'Logout', component: ''}
         ];
       }
