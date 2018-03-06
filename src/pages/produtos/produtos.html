@@ -26,8 +26,9 @@
         <img [src]="item.imageUrl || 'assets/imgs/prod.jpg'">
       </ion-thumbnail>
       <h2>{{item.nomeProduto}}</h2>
-      <p>{{item.preco | currency }}</p>
-
+      <p>{{item.preco | currency:'BRL':true:'1.2-2'}}</p>
+      <p style="color: red;" *ngIf="item.quantidadeEstoque<1">[ESGOTADO]</p>
+      
     </button>
   </ion-list>
 

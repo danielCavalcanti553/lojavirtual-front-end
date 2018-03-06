@@ -1,0 +1,64 @@
+<ion-header>
+
+    <ion-navbar>
+     <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+     </button>
+     <ion-title>Meus Dados</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="formGroup" (ngSubmit)="atualizaDados(); $event.preventDefault()">
+
+
+        <ion-item>
+            <ion-label stacked>CPF*</ion-label>
+            <ion-input disabled="true" formControlName="cpf" type="text"></ion-input>
+          </ion-item>
+          <p *ngIf="formGroup.controls.cpf.dirty && formGroup.controls.cpf.errors" margin-left>Valor Inválido</p>
+      <ion-item>
+        <ion-label stacked>Nome*</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <p *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor Inválido</p>
+      <ion-item>
+        <ion-label stacked>Endereço*</ion-label>
+        <ion-input formControlName="endereco" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="formGroup.controls.endereco.dirty && formGroup.controls.endereco.errors" margin-left>Valor Inválido</p>
+    <ion-item>
+        <ion-label stacked>Município*</ion-label>
+        <ion-input formControlName="municipio" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="formGroup.controls.municipio.dirty && formGroup.controls.municipio.errors" margin-left>Valor Inválido</p>
+    <ion-item>
+        <ion-label stacked>Estado*</ion-label>
+        <ion-input formControlName="estado" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="formGroup.controls.estado.dirty && formGroup.controls.estado.errors" margin-left>Valor Inválido</p>
+    
+    <ion-item>
+        <ion-label stacked>Telefone*</ion-label>
+        <ion-input formControlName="telefone" type="text"></ion-input>
+    </ion-item>
+    <p *ngIf="formGroup.controls.telefone.dirty && formGroup.controls.telefone.errors" margin-left>Valor Inválido</p>
+    
+      <ion-item>
+          <ion-label stacked>Email*</ion-label>
+          <ion-input disabled="true" formControlName="email" type="text"></ion-input>
+      </ion-item>
+      <p *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor Inválido</p>
+    
+      <ion-item>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input formControlName="senha" type="password"></ion-input>
+      </ion-item>
+      <p *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>Valor Inválido</p>
+    
+      <button ion-button block type="submit" [disabled]="formGroup.invalid">Atualizar</button>
+    
+    </form>
+</ion-content>

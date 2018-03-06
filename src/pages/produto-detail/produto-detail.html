@@ -6,7 +6,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
     <ion-fab top right edge>
         <button navPush="CarrinhoPage" ion-fab color="primary">
@@ -21,10 +20,11 @@
                 <!-- Uso o ? -> Não mostrar erro enquanto não carrega o dado -->
             </ion-card-title>
             <p>
-                {{item?.preco | currency}}
+                {{item?.preco | currency:'BRL':true:'1.2-2'}}
             </p>
+            <p style="color: red;" *ngIf="item?.quantidadeEstoque<1">[ESGOTADO]</p>
         </ion-card-content>
     </ion-card>
 
-    <button ion-button block outline (click)="addCarrinho(item)">Adicionar ao Carrinho</button>
+    <button *ngIf="item?.quantidadeEstoque>=1" ion-button block outline (click)="addCarrinho(item)">Adicionar ao Carrinho</button>
 </ion-content>

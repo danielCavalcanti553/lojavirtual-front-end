@@ -59,9 +59,6 @@ export class AuthService{
 
     perfil(){        
         
-
-
-       
     }
 
     logout(){
@@ -75,6 +72,7 @@ export class AuthService{
 
         return [
           { title: 'Profile', component: 'ProfilePage' },
+          { title: 'Meus Dados', component: 'DadosClientePage' },
           { title: 'Categorias', component: 'CategoriasPage' },
           { title: 'Carrinho', component: 'CarrinhoPage' },
           { title: 'Logout', component: ''}
@@ -86,9 +84,10 @@ export class AuthService{
   
         return [
           { title: 'Profile', component: 'ProfilePage' },
+          { title: 'Meus Dados', component: 'DadosClientePage' },
           { title: 'Categorias', component: 'CategoriasPage' },
           { title: 'Carrinho', component: 'CarrinhoPage' },
-          { title: 'Administrador', component: 'CarrinhoPage'},
+          { title: 'Histórico', component: 'HistoricoPage'},
           { title: 'Logout', component: ''}
         ];
       }

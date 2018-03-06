@@ -23,8 +23,6 @@ export class ClienteService{
       return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 
-
-
     getImageFromS3(id:string) : Observable<any>{ // pegar imagem da amazon
        let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`;
        return this.http.get(url, {responseType:'blob'})
@@ -33,6 +31,17 @@ export class ClienteService{
     insert(obj : ClienteDTO){
       return this.http.post(
         `${API_CONFIG.baseUrl}/clientes`,
+        obj,
+        {
+          observe: 'response',
+          responseType: 'text'
+        }
+      );
+    }
+
+    update(obj : ClienteDTO, idcliente : string){
+      return this.http.put(
+        `${API_CONFIG.baseUrl}/clientes/${idcliente}`,
         obj,
         {
           observe: 'response',

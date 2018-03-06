@@ -57,8 +57,8 @@
   </ion-item>
   <p *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>Valor Inválido</p>
 
-  <button ion-button block type="submit">Criar Conta</button>
-
+  
+  <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
 </form>
 
 </ion-content>
