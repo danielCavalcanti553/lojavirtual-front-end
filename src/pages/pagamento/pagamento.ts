@@ -45,10 +45,16 @@ export class PagamentoPage {
           let carrinho = this.carrinhoService.getCarrinho();
 
           this.pedido = {
+            codigoPedido: null,
             cliente: {codigoCliente : response['codigoCliente']},
-            pagamento : null,
-            itens : carrinho.items.map(x=>{return {quantidade:x.quantidade , produto:
-                    {codigoProduto:x.produto.codigoProduto}}})
+            pagamento : {numeroCartao: null, valor : null},
+            dataPedido: null,
+            codigoNfe: null,
+            itens : carrinho.items.map(x=>{
+              return {quantidade:x.quantidade , 
+                      produto:{codigoProduto:x.produto.codigoProduto},
+                    preco: null,
+                  imageUrl : null}})
           }
         },
       error => {

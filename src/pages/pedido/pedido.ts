@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PedidoService } from '../../services/domain/pedido.service';
+import { PedidoDTO } from '../../models/pedido.dto';
 
-/**
- * Generated class for the PedidoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +12,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PedidoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items : PedidoDTO[];
+
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public pedidoService : PedidoService) {
+      
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PedidoPage');
+    this.carregaPedidos();
+    
+    
   }
 
+  carregaPedidos(){
+    this.pedidoService.findByEstoque()
+      .subscribe(response => {
+        console.log(response['content']);
+        this.items = response['content'];
+      });
+    }
+
+
+
+  proximo(p : PedidoDTO){
+    
+    this.navCtrl.push('PedidoDetailPage', {pedido : p});
+  }
 }

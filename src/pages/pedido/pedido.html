@@ -1,15 +1,29 @@
 <ion-header>
 
-    <ion-navbar style="background-color:blue;">
-     <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-     </button>
-     <ion-title>Meus Pedidos</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
+  <ion-navbar style="background-color:blue;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meus Pedidos</ion-title>
+  </ion-navbar>
+
+</ion-header>
 
 
 <ion-content padding>
+
+  <ion-card *ngFor="let item of items" (click)="proximo(item)">
+    <ion-list>
+      <button ion-item>
+          <ion-icon name="checkmark-circle" item-start style="color: green;"></ion-icon>
+          <h2>CÓD: {{item.codigoPedido}}</h2>
+        <h2>{{item.dataPedido}}</h2>
+        <p>{{item.pagamento.valor  | currency:'BRL':true:'1.2-2'}}</p>
+        
+      </button>
+    </ion-list>
+
+  </ion-card>
+
 
 </ion-content>

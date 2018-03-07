@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Detalhes do Pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+          <h2><b>CÓDIGO PEDIDO:</b> {{pedido.codigoPedido}}</h2>
+          <p><b>Nota Fiscal Nº:</b> {{pedido.codigoNfe}}</p>
+          <p>{{pedido.dataPedido}}</p>
+          <p><b>{{pedido.pagamento.valor  | currency:'BRL':true:'1.2-2'}}</b></p>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header>
+        <h2>Produtos</h2>
+        </ion-card-header>
+      <ion-list>
+          <ion-item *ngFor="let item of pedido.itens">
+            <ion-thumbnail item-start>
+                <img [src]="item.imageUrl || 'assets/imgs/prod.jpg'">
+            </ion-thumbnail>
+            <h2>{{item.produto.nomeProduto}}</h2>
+            <p>Quantidade: {{item.quantidade}}</p>
+            <p>Preço: {{item.produto.preco | currency:'BRL':true:'1.2-2' }}</p>
+          
+            
+          </ion-item>
+        </ion-list>
+</ion-card>
+
+
+</ion-content>

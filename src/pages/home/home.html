@@ -1,9 +1,15 @@
-<ion-content padding>
-  <h3>Sistema de Pedidos</h3>
-  <img src="assets/imgs/tela-inicial.png" alt="logo">
+<ion-content>
+  
+    <ion-card padding-top>
+        <ion-card-header padding-top>
+        <h1 text-center><b>LOJA VIRTUAL</b></h1>
+        <h2 text-center>PEÇAS PARA SEU VEÍCULO</h2><br />
+        <p text-center>Software para fins educacionais</p>
+        </ion-card-header>
+        <hr />
 
-<form>
-  <ion-item>
+<form padding >
+  <ion-item >
 
     <ion-label stacked>Email</ion-label>
     <ion-input [(ngModel)]="creds.email" name="email" type="text" ></ion-input>
@@ -16,9 +22,9 @@
     <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
   </ion-item>
 
-  <button ion-button block (click)="login()" >Entrar</button>
-  <button ion-button block outline (click)="signup()">Registrar</button>
+  <button ion-button block primary (click)="login()" >Entrar</button>
+  <button ion-button block outline (click)="signup()">Não sou registrado</button>
 </form>
-
+</ion-card>
 </ion-content>
   

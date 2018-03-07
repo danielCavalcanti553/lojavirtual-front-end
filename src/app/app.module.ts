@@ -17,6 +17,7 @@ import { ProdutoService } from '../services/domain/produto.service';
 import { CarrinhoService } from '../services/domain/carrinho.service';
 import { CacheModule } from 'ionic-cache';
 import { ImageUtilService } from '../services/image-util.service';
+import { PedidoService } from '../services/domain/pedido.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ImageUtilService } from '../services/image-util.service';
     ClienteService,
     ProdutoService,
     CarrinhoService,
-    ImageUtilService
+    ImageUtilService,
+    PedidoService
   ]
 })
 export class AppModule {}

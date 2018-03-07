@@ -1,15 +1,31 @@
 page-home {
+    h1{
+        
+        color: #fff;
+    }
+    .header{
+       
+        border-bottom: 1px solid #fff;
 
+    }
+    p{
+        color: #fff;
+    }
     h3{
         text-align: center;
     }
 
-    img{
-        width: 200px;
-        align-self: center;
-        margin: auto;
-        display: block;
-        padding: 10px;
+
+
+    .content{
+        background-image: url('../assets/imgs/fundo-car.jpg');
+        background-position: bottom center ;
     }
 
+    .label{
+        background-color: #fff;
+    }
+    .input{
+        background-color: transparent;
+    }
 }

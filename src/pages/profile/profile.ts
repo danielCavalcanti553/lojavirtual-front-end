@@ -84,6 +84,31 @@ loadData(){
     });
   }
 
+
+// Carregar Camera
+getGaleriaPicture(){
+
+  this.cameraOn = true;
+
+  const options: CameraOptions = {
+    quality: 100,
+    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.PNG, // ou JPEG
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  
+  this.camera.getPicture(options).then((imageData) => {
+   // grava imagem em base 64
+   this.picture = 'data:image/png;base64,' + imageData; // jpeg
+   this.cameraOn = false;
+  }, (err) => {
+   // Handle error
+  });
+}
+
+
+
   enviaFoto(){
     this.clienteService.uploadFoto(this.picture)
       .subscribe(response => {

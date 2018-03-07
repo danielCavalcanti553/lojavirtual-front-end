@@ -19,4 +19,8 @@ export class PedidoService{
             }
         );
     }
+
+    findByEstoque(page : number = 0, linesPage : number = 15){
+       return this.http.get<PedidoDTO>(`${API_CONFIG.baseUrl}/pedidos?page=${page}&linesPage=${linesPage}`);
+    }
 }
