@@ -43,7 +43,7 @@ export class HomePage {
     //Autenticando
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-          //console.log(response.headers.get('Authorization')); // imprimindo header
+          console.log(response.headers.get('Authorization')); // imprimindo header
           this.auth.sucessfulLogin(response.headers.get('Authorization'));
           this.auth.perfil();
           this.navCtrl.setRoot('CategoriasPage'); // Indo para categorias

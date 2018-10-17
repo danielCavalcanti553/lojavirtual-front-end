@@ -21,6 +21,7 @@ export class AuthService{
 
     authenticate(creds : CredenciaisDTO){
         this.storage.setMenu(null);
+        
         return this.http.post(
             `${API_CONFIG.baseUrl}/login`,
             creds,
